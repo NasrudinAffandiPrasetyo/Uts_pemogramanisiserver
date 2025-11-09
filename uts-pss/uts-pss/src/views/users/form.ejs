@@ -1,0 +1,23 @@
+<h2><%= action === 'create' ? 'Tambah' : 'Edit' %> User</h2>
+<form method="post" action="<%= action==='create' ? '/users' : '/users/' + item.id + '?_method=PUT' %>">
+  <div class="mb-3">
+    <label class="form-label">Nama</label>
+    <input class="form-control" name="name" value="<%= item.name || '' %>" required />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" name="email" value="<%= item.email || '' %>" required />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Role</label>
+    <select class="form-select" name="role">
+      <option value="admin" <%= item.role==='admin' ? 'selected' : '' %>>admin</option>
+      <option value="staff" <%= item.role==='staff' ? 'selected' : '' %>>staff</option>
+      <option value="customer" <%= item.role==='customer' ? 'selected' : '' %>>customer</option>
+    </select>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-primary" type="submit">Simpan</button>
+    <a class="btn btn-secondary" href="/users">Batal</a>
+  </div>
+</form>
